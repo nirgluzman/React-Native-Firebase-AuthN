@@ -1,20 +1,84 @@
+import { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+// React Navigation
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
+
+import IconButton from './components/UI/IconButton';
+
+// Context for managing user authentication
+import AuthContextProvider, { AuthContext } from './store/auth-context';
+
+// global color styles
+import { Colors } from './constants/styles';
+
+const Stack = createNativeStackNavigator();
+
+// un-authenticated user
+function AuthStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.primary500 },
+        headerTintColor: 'white',
+        contentStyle: { backgroundColor: Colors.primary100 }
+      }}>
+      <Stack.Screen name='Login' component={LoginScreen} />
+      <Stack.Screen name='Signup' component={SignupScreen} />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// authenticated user
+function AuthenticatedStack() {
+  // consuming the Context
+  const { logOut } = useContext(AuthContext);
+
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.primary500 },
+        headerTintColor: 'white',
+        contentStyle: { backgroundColor: Colors.primary100 }
+      }}>
+      <Stack.Screen
+        name='Welcome'
+        component={WelcomeScreen}
+        options={{
+          // logout button
+          headerRight: ({ tintColor }) => (
+            <IconButton icon='exit' size={24} color={tintColor} onPress={logOut} />
+          )
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function Root() {
+  // consuming the Context
+  const { isAuthenticated } = useContext(AuthContext);
+
+  return (
+    <NavigationContainer>
+      {isAuthenticated ? <AuthenticatedStack /> : <AuthStack />}
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <StatusBar style='light' />
+
+      <AuthContextProvider>
+        <Root />
+      </AuthContextProvider>
+    </>
+  );
+}
