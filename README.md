@@ -26,6 +26,10 @@
 
 - https://www.youtube.com/watch?v=mZlKwRV4MC8 (Create an Expo App with React-Native Firebase)
 
+### Firebase Authentication
+
+- https://blog.openreplay.com/authentication-in-react-18-using-firebase-v9/
+
 ### Firebase API Key - Security aspects
 
 https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31435374?start=15#questions/5576238
@@ -52,3 +56,44 @@ https://docs.expo.dev/guides/environment-variables/
 
 - Do not store sensitive info, such as private keys, in `EXPO_PUBLIC_` variables. These variables
   will be visible in plain-text in your compiled application.
+
+### React Navigation
+
+https://reactnavigation.org/docs/getting-started
+
+- Mandatory installations:
+
+```bash
+npm install @react-navigation/native
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+- Native Stack Navigator:
+
+```bash
+npm install @react-navigation/native-stack
+```
+
+- Bottom Tabs Navigator:
+
+```bash
+npm install @react-navigation/bottom-tabs
+```
+
+### Async Storage - data storage system for React Native applications
+
+- https://firebase.google.com/support/release-notes/js#version_1030_-_august_22_2023
+- https://react-native-async-storage.github.io/async-storage/docs/install
+- https://docs.expo.dev/versions/latest/sdk/async-storage/
+
+- When initializing Firebase Auth for React Native we need to provide AsyncStorage, otherwise, Auth
+  state will default to memory persistence and will not persist between sessions.
+
+### Expo SplashScreen
+
+https://docs.expo.dev/versions/latest/sdk/splash-screen/
+
+- Library to tell the splash screen to remain visible until it has been explicitly told to hide.
+
+- This is useful to do tasks that will happen behind the scenes such as making API calls,
+  pre-loading fonts, animating the splash screen and so on.
