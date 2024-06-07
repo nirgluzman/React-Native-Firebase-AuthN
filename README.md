@@ -1,14 +1,25 @@
-# React Native - Expo + Firebase + Google Signin
+# React Native - Expo + Firebase AuthN
+
+Sample application to show authentication with email and password using Firebase Auth (backend
+service).<br>
+
+https://firebase.google.com/docs/auth
 
 ### GitHub repo
 
-- https://github.com/nirgluzman/React-Native-Firebase-Google-AuthN.git
+- https://github.com/nirgluzman/React-Native-Firebase-AuthN.git
 
 ## Resources
 
 ### Expo & Firebase
 
-- https://docs.expo.dev/guides/using-firebase/
+Accordind to Expo documentation, there are two options:<br>
+https://docs.expo.dev/guides/using-firebase/
+
+- Firebase JS SDK
+- React Native Firebase
+
+- The great advantage with Firebase JS SDK is that it supports Expo Go.
 
 ### Firebase JS SDK
 
@@ -29,6 +40,27 @@
 ### Firebase Authentication
 
 - https://blog.openreplay.com/authentication-in-react-18-using-firebase-v9/
+
+### Google Signin
+
+- Sign in with Google Branding Guidelines,
+  https://developers.google.com/identity/branding-guidelines
+
+- https://reactnativeelements.com/docs/components/socialicon (React Native UI Elements)
+
+- https://stackoverflow.com/questions/75924863/expo-go-react-native-application-that-uses-google-authentication-in-firebase?rq=2
+
+- https://medium.com/@prasadkatkade008/how-to-set-up-expo-dev-client-a-complete-guide-2024-be898a519ec1
+
+- https://javascript.plainenglish.io/how-to-add-google-sign-in-expo-react-native-guide-2024-f9737d1f2a46
+
+- https://react-native-google-signin.github.io/docs/buttons/native
+
+- React Native does not export the `signInWIthPopup` and `signInWithRedirect` APIs since both of
+  these functions directly modify the DOM.<br>
+  https://stackoverflow.com/questions/70221477/some-functions-appear-as-undefined-firebase-auth-v9
+
+- https://stackoverflow.com/questions/78591121/what-is-the-recommended-way-to-support-google-sign-in-on-react-native-applicatio
 
 ### Firebase API Key - Security aspects
 
